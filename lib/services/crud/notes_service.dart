@@ -245,6 +245,8 @@ class NotesService {
 
       //create user table
 
+      //the sql is in the variable used it will create if it doesnot exists
+
       await db.execute(createUserTable);
 
       //create notes table

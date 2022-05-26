@@ -11,6 +11,9 @@ void main() {
     });
 
     test('Cannot log out if not initialialized', () {
+      //test has two part first is the title the next is it runs the expect function
+      //expect takes two parameters and compares them first here is a exception call
+      //the next is throwA used to match exception "current understanding"
       expect(provider.logOut(),
           throwsA(const TypeMatcher<NotInitializedException>()));
     });
@@ -28,6 +31,7 @@ void main() {
       expect((provider.isInitailized), true);
     }, timeout: const Timeout(Duration(seconds: 2)));
 
+    //In the following test we will be able to insert multiple code in second part as we see
     test('Create user should delegate to logIn function', () async {
       final badEmailUser = provider.createUser(
         email: 'foo@bar.com',
@@ -72,6 +76,7 @@ class NotInitializedException implements Exception {}
 class MockAuthProvider implements AuthProvider {
   AuthUser? _user;
   var _isInitialized = false;
+
   bool get isInitailized => _isInitialized;
 
   @override
